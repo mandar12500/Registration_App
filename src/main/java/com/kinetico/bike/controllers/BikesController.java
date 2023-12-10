@@ -31,12 +31,16 @@ public class BikesController {
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Bike bike) {
+        System.out.println(bike.getEmail());
+        System.out.println("Hello");
         bikeRepository.save(bike);
     }
 
     @GetMapping("/{id}")
     public Bike get(@PathVariable("id") long id) {
 //        return new Bike();
+        Bike bike = bikeRepository.getOne(id);
+        System.out.println(bike.getModel());
         return bikeRepository.getOne(id);
     }
 
